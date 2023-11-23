@@ -1,0 +1,7 @@
+{
+  "extends": ["@tsconfig/node-lts"],
+  "exclude": ["node_modules", "out"],
+  "compilerOptions": {
+    "isolatedModules": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "iac-test-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "iac build",
+    "deploy": "aws cloudformation deploy --template-file ./out/template.json --stack-name iac-test-project --capabilities CAPABILITY_IAM"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/node-lts": "^18.12.5",
+    "@types/aws-lambda": "^8.10.124",
+    "@types/node": "^20.8.4",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.438.0",
+    "aws-cdk": "^2.101.1",
+    "axios": "^1.5.1"
+  }
+}
