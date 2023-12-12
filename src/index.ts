@@ -1,18 +1,18 @@
-import { s3Bucket, lambdaHandler } from '@simple-cloud/aws';
+import { lambdaFunction, s3Bucket } from '@simple-cloud/aws';
 
-const bucketClient = s3Bucket({ name: 'hello-world-bucket' });
+const lambda = lambdaFunction({ name: 'hello-world' });
+const bucket = s3Bucket({ name: 'hello-world-bucket' });
 
-export const handler = lambdaHandler({ name: 'hello-world' })(
-  async (event, context) => {
-    const item = await bucketClient.get({ key: '1' });
+bucket.grantRead(lambda);
 
-    if (!item) {
-      return { statusCode: 404 };
-    }
+setupLogging();
 
-    return {
-      statusCode: 200,
-      body: item,
-    };
-  }
-);
+export const handler = lambda.handler(async (event) => {
+  const statusCode = 200;
+
+  return { statusCode };
+});
+
+function setupLogging() {
+  console.log('Logging set up');
+}
